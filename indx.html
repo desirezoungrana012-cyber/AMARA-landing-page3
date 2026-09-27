@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Équilibre Naturel — Amara Diallo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-deep:#164A3A;
+    --green-sage:#7C9A82;
+    --green-sage-light:#E7EEE6;
+    --gold:#C9A86A;
+    --cream:#FBF8F2;
+    --ink:#20302A;
+    --white:#FFFFFF;
+    --radius:22px;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    font-family:'Karla',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;color:var(--green-deep);line-height:1.15;}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .eyebrow{display:none;}
+
+  a.btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    min-height:56px;padding:0 34px;border-radius:100px;
+    background:var(--green-deep);color:var(--cream);
+    font-family:'Karla',sans-serif;font-weight:700;font-size:1.02rem;
+    text-decoration:none;border:none;cursor:pointer;
+    transition:transform .35s ease, box-shadow .35s ease;
+    box-shadow:0 10px 30px -12px rgba(22,74,58,.45);
+  }
+  a.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px -10px rgba(22,74,58,.5);}
+  a.btn.gold{background:var(--gold);color:var(--green-deep);box-shadow:0 10px 30px -12px rgba(201,168,106,.55);}
+  a.btn:focus-visible{outline:3px solid var(--green-sage);outline-offset:3px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:64px 0 96px;
+    background:linear-gradient(180deg,var(--green-sage-light) 0%, var(--cream) 78%);
+    overflow:hidden;
+  }
+  .hero .wrap{position:relative;z-index:2;display:grid;gap:36px;align-items:center;}
+  .hero-blob{position:absolute;z-index:1;opacity:.9;}
+  .hero h1{font-size:clamp(2rem,6vw,3.1rem);max-width:14ch;}
+  .hero p.sub{margin-top:20px;max-width:46ch;font-size:1.12rem;color:#3C4C46;}
+  .hero .cta-row{margin-top:32px;display:flex;flex-wrap:wrap;gap:16px;}
+  .hero-figure{display:flex;justify-content:center;}
+
+  /* ===== PROBLEM / AGITATION ===== */
+  .story{background:var(--white);}
+  .story .wrap{max-width:760px;text-align:left;}
+  .story h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:22px;}
+  .story p{font-size:1.08rem;color:#3C4C46;max-width:58ch;}
+  .story .agitation{margin-top:34px;padding-top:34px;border-top:1px solid #E4DFD3;}
+  .story .agitation p{font-style:italic;color:var(--green-deep);}
+
+  /* ===== SOLUTION ===== */
+  .solution{background:var(--green-deep);color:var(--cream);position:relative;overflow:hidden;}
+  .solution .wrap{max-width:720px;position:relative;z-index:2;}
+  .solution h2{color:var(--cream);font-size:clamp(1.7rem,4vw,2.3rem);}
+  .solution p{margin-top:20px;font-size:1.1rem;color:#DCE7E1;max-width:56ch;}
+  .solution-blob{position:absolute;right:-80px;top:-60px;opacity:.5;z-index:1;}
+
+  /* ===== BENEFITS ===== */
+  .benefits .wrap{}
+  .benefits h2{font-size:clamp(1.6rem,4vw,2.2rem);max-width:20ch;margin-bottom:44px;}
+  .cards{display:grid;gap:22px;grid-template-columns:repeat(3,1fr);}
+  .card{
+    background:var(--white);
+    border:1px solid #EAE4D6;
+    border-radius:var(--radius);
+    padding:32px 26px;
+  }
+  .card .icon{width:46px;height:46px;margin-bottom:18px;}
+  .card h3{font-size:1.18rem;margin-bottom:10px;}
+  .card p{color:#4A5952;font-size:.98rem;}
+
+  /* ===== TESTIMONIALS ===== */
+  .testi{background:var(--green-sage-light);}
+  .testi h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:40px;max-width:18ch;}
+  .testi-grid{display:grid;gap:22px;grid-template-columns:repeat(3,1fr);}
+  .testi-card{
+    background:var(--white);border-radius:var(--radius);padding:30px 26px;
+    display:flex;flex-direction:column;gap:16px;
+  }
+  .testi-card p.quote{font-size:1.02rem;color:var(--ink);}
+  .testi-card .who{display:flex;align-items:center;gap:12px;margin-top:auto;}
+  .avatar{width:38px;height:38px;border-radius:50%;background:var(--gold);flex:none;}
+  .who .name{font-weight:700;font-size:.92rem;color:var(--green-deep);}
+  .who .place{font-size:.82rem;color:#6B7A73;}
+
+  /* ===== FAQ ===== */
+  .faq .wrap{max-width:760px;}
+  .faq h2{font-size:clamp(1.6rem,4vw,2.2rem);margin-bottom:36px;}
+  .faq-item{border-bottom:1px solid #E4DFD3;}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:22px 0;
+    display:flex;justify-content:space-between;align-items:center;gap:16px;
+    font-family:'Fraunces',serif;font-weight:500;color:var(--green-deep);font-size:1.08rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item .plus{flex:none;width:22px;height:22px;position:relative;}
+  .faq-item .plus::before,.faq-item .plus::after{content:"";position:absolute;background:var(--green-deep);border-radius:2px;transition:transform .3s ease;}
+  .faq-item .plus::before{width:100%;height:2px;top:50%;left:0;transform:translateY(-50%);}
+  .faq-item .plus::after{width:2px;height:100%;left:50%;top:0;transform:translateX(-50%);}
+  .faq-item[open] .plus::after{transform:translateX(-50%) rotate(90deg);opacity:0;}
+  .faq-item p{padding-bottom:22px;color:#4A5952;max-width:60ch;}
+
+  /* ===== CTA FINAL ===== */
+  .final{
+    background:var(--green-deep);color:var(--cream);text-align:center;position:relative;overflow:hidden;
+  }
+  .final .wrap{max-width:640px;position:relative;z-index:2;}
+  .final h2{color:var(--cream);font-size:clamp(1.7rem,4.5vw,2.4rem);}
+  .final p.lead{margin-top:16px;color:#DCE7E1;font-size:1.08rem;}
+  .countdown{
+    display:flex;justify-content:center;gap:14px;margin:34px 0;flex-wrap:wrap;
+  }
+  .countdown .unit{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+    border-radius:16px;padding:14px 18px;min-width:74px;
+  }
+  .countdown .num{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:var(--gold);display:block;}
+  .countdown .label{font-size:.72rem;letter-spacing:.03em;color:#DCE7E1;}
+  .final .cta-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:8px;}
+
+  footer{background:var(--green-deep);color:#A9BFB4;text-align:center;padding:26px 0;font-size:.85rem;}
+  footer a{color:#DCE7E1;}
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float{
+    position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));
+    width:60px;height:60px;border-radius:50%;
+    background:#1EAD5A;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 26px -8px rgba(0,0,0,.4);z-index:50;text-decoration:none;
+    transition:transform .3s ease;
+  }
+  .wa-float:hover{transform:scale(1.06);}
+
+  /* ===== EXIT POPUP ===== */
+  .overlay{
+    position:fixed;inset:0;background:rgba(22,32,28,.55);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:20px;
+  }
+  .overlay.show{display:flex;}
+  .popup{
+    background:var(--cream);border-radius:26px;max-width:420px;width:100%;
+    padding:38px 30px;text-align:center;position:relative;
+  }
+  .popup h3{font-size:1.4rem;margin-bottom:12px;}
+  .popup p{color:#4A5952;margin-bottom:22px;}
+  .popup input{
+    width:100%;min-height:50px;border-radius:100px;border:1px solid #D8D0BE;
+    padding:0 20px;margin-bottom:14px;font-family:'Karla',sans-serif;font-size:1rem;
+  }
+  .popup input:focus-visible{outline:3px solid var(--green-sage);outline-offset:2px;}
+  .popup .close{
+    position:absolute;top:16px;right:18px;background:none;border:none;
+    font-size:1.3rem;color:#7A867F;cursor:pointer;line-height:1;
+  }
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity 1.1s ease, transform 1.1s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media (max-width:768px){
+    section{padding:60px 0;}
+    .cards,.testi-grid{grid-template-columns:1fr;}
+    .hero{padding:48px 0 72px;}
+    .final{}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <svg class="hero-blob" width="420" height="420" viewBox="0 0 420 420" style="top:-120px;right:-140px;" aria-hidden="true">
+    <path fill="#7C9A82" opacity="0.35" d="M320,60 C380,110 400,210 360,290 C320,370 210,400 130,360 C50,320 20,210 60,130 C100,50 260,10 320,60 Z"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1 class="reveal">Et si vous pouviez mieux manger sans passer votre vie au régime&nbsp;?</h1>
+      <p class="sub reveal">Avec « Équilibre Naturel », apprenez à rééquilibrer votre alimentation simplement, avec une méthode pensée pour les femmes africaines et adaptée à leur quotidien.</p>
+      <div class="cta-row reveal">
+        <a class="btn gold" href="#" id="cta-hero">Je découvre Équilibre Naturel</a>
+      </div>
+    </div>
+    <div class="hero-figure reveal">
+      <svg width="260" height="220" viewBox="0 0 260 220" aria-hidden="true">
+        <ellipse cx="130" cy="180" rx="100" ry="16" fill="#164A3A" opacity=".08"/>
+        <circle cx="95" cy="95" r="70" fill="#E7EEE6"/>
+        <path d="M60 100 Q95 40 150 55 Q190 70 180 120 Q170 165 120 165 Q65 165 60 100 Z" fill="#C9A86A" opacity=".85"/>
+        <circle cx="170" cy="60" r="26" fill="#7C9A82"/>
+        <circle cx="60" cy="150" r="18" fill="#164A3A" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PROBLÈME / AGITATION ===== -->
+<section class="story">
+  <div class="wrap">
+    <h2 class="reveal">Vous avez déjà essayé. Plus d'une fois.</h2>
+    <p class="reveal">Vous avez déjà essayé plusieurs régimes, mais les résultats ne durent pas. Entre le travail, les responsabilités et le manque de temps, suivre une alimentation trop restrictive devient rapidement difficile.</p>
+    <div class="agitation reveal">
+      <p>À force de recommencer les mêmes régimes, vous pouvez finir par vous décourager et avoir l'impression que manger sainement est forcément compliqué ou frustrant. Pourtant, le problème n'est pas nécessairement votre volonté&nbsp;: c'est souvent une méthode qui n'est pas adaptée à votre réalité.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="solution">
+  <svg class="solution-blob" width="360" height="360" viewBox="0 0 360 360" aria-hidden="true">
+    <path fill="#C9A86A" d="M280,50 C330,100 340,200 300,270 C260,340 160,360 100,320 C40,280 20,180 60,110 C100,40 230,0 280,50 Z"/>
+  </svg>
+  <div class="wrap">
+    <h2 class="reveal">Une méthode pensée pour votre réalité</h2>
+    <p class="reveal">« Équilibre Naturel » vous accompagne vers un rééquilibrage alimentaire plus simple et durable, en tenant compte de votre quotidien et des aliments que vous connaissez et consommez réellement.</p>
+  </div>
+</section>
+
+<!-- ===== BÉNÉFICES ===== -->
+<section class="benefits">
+  <div class="wrap">
+    <h2 class="reveal">Ce que ça change concrètement</h2>
+    <div class="cards">
+      <div class="card reveal">
+        <svg class="icon" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#E7EEE6"/><path d="M14 23c0-6 4-10 9-10s9 4 9 10-4 10-9 10-9-4-9-10Z" fill="none" stroke="#164A3A" stroke-width="2"/><path d="M18 23h10M23 18v10" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/></svg>
+        <h3>Mieux manger sans régime extrême</h3>
+        <p>Découvrez une façon plus équilibrée de vous alimenter sans vous imposer des restrictions difficiles à maintenir.</p>
+      </div>
+      <div class="card reveal">
+        <svg class="icon" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#E7EEE6"/><path d="M14 28c2-8 6-13 9-13s7 5 9 13" fill="none" stroke="#164A3A" stroke-width="2" stroke-linecap="round"/><circle cx="23" cy="15" r="4" fill="#C9A86A"/></svg>
+        <h3>Une approche adaptée à votre réalité</h3>
+        <p>Apprenez à faire de meilleurs choix alimentaires avec des aliments et des habitudes compatibles avec votre quotidien de femme africaine.</p>
+      </div>
+      <div class="card reveal">
+        <svg class="icon" viewBox="0 0 46 46"><circle cx="23" cy="23" r="21" fill="#E7EEE6"/><path d="M15 26l6 6 12-14" fill="none" stroke="#164A3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Construire des habitudes durables</h3>
+        <p>L'objectif est de comprendre votre alimentation et de mettre en place des habitudes que vous pouvez conserver dans le temps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="testi">
+  <div class="wrap">
+    <h2 class="reveal">Elles l'ont vécu</h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p class="quote">« En 6 semaines j'ai perdu 4 kg sans souffrir. Amara m'a appris à manger ce que j'aime autrement. Je recommande les yeux fermés. »</p>
+        <div class="who"><div class="avatar"></div><div><div class="name">Fatou K.</div><div class="place">Dakar</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="quote">« J'avais essayé 4 régimes avant. Là pour la première fois je comprends pourquoi ça marche. Mon rapport à la nourriture a complètement changé. »</p>
+        <div class="who"><div class="avatar"></div><div><div class="name">Aicha M.</div><div class="place">Abidjan</div></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <p class="quote">« Le meilleur investissement santé de l'année. Les recettes sont adaptées à nos aliments locaux. Enfin quelqu'un qui nous comprend vraiment. »</p>
+        <div class="who"><div class="avatar"></div><div><div class="name">Rokhaya D.</div><div class="place">Saint-Louis</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="wrap">
+    <h2 class="reveal">Vos questions</h2>
+    <details class="faq-item reveal">
+      <summary>Est-ce que cette formation est adaptée aux femmes africaines&nbsp;? <span class="plus"></span></summary>
+      <p>Oui. L'approche est pensée pour les réalités alimentaires et le quotidien des femmes africaines, avec notamment des recettes adaptées aux aliments locaux.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Est-ce un régime strict&nbsp;? <span class="plus"></span></summary>
+      <p>Non. L'objectif est d'apprendre à mieux manger de manière plus équilibrée et durable, plutôt que de suivre une méthode extrêmement restrictive.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Comment accéder à la formation&nbsp;? <span class="plus"></span></summary>
+      <p>Le paiement pourra être effectué directement en ligne via FedaPay. Après le paiement, les modalités d'accès à la formation seront communiquées.</p>
+    </details>
+    <details class="faq-item reveal">
+      <summary>Est-ce que je dois avoir beaucoup de temps pour suivre la formation&nbsp;? <span class="plus"></span></summary>
+      <p>L'approche est pensée pour des femmes actives qui disposent de peu de temps et souhaitent intégrer progressivement de meilleures habitudes dans leur quotidien.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="reveal">L'offre de lancement se termine bientôt</h2>
+    <p class="lead reveal">Profitez du tarif de lancement avant la fin du compte à rebours.</p>
+    <div class="countdown reveal" id="countdown">
+      <div class="unit"><span class="num" id="cd-h">48</span><span class="label">heures</span></div>
+      <div class="unit"><span class="num" id="cd-m">00</span><span class="label">minutes</span></div>
+      <div class="unit"><span class="num" id="cd-s">00</span><span class="label">secondes</span></div>
+    </div>
+    <div class="cta-row reveal">
+      <a class="btn gold" href="#" id="cta-final">Je commence Équilibre Naturel</a>
+      <a class="btn" href="#" id="cta-whatsapp-final" style="background:#1EAD5A;">Poser une question sur WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Équilibre Naturel — Amara Diallo, coach nutritionniste certifiée</div>
+</footer>
+
+<!-- WhatsApp flottant -->
+<a class="wa-float" id="wa-float" href="#" aria-label="Contacter sur WhatsApp" target="_blank" rel="noopener">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="none"><path fill="#fff" d="M16 3C9 3 3.2 8.7 3.2 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2.1c2 1.1 4.2 1.7 6.6 1.7 7 0 12.8-5.7 12.8-12.8C28.8 8.7 23 3 16 3Zm0 23.3c-2.1 0-4.1-.6-5.9-1.6l-.4-.2-3.8 1.2 1.2-3.7-.3-.4a10.3 10.3 0 0 1-1.7-5.7C5.1 9.9 10 5.1 16 5.1S26.9 9.9 26.9 15.8 22 26.3 16 26.3Zm5.9-7.7c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.1-.2.3-.8 1-1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-2-1.8-2.3-.2-.3 0-.5.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.7-1.8-1-2.4-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4Z"/></svg>
+</a>
+
+<!-- Pop-up de sortie -->
+<div class="overlay" id="exit-overlay" role="dialog" aria-modal="true" aria-labelledby="exit-title">
+  <div class="popup">
+    <button class="close" id="exit-close" aria-label="Fermer">×</button>
+    <h3 id="exit-title">Avant de partir…</h3>
+    <p>Recevez un guide gratuit pour commencer à mieux manger dès aujourd'hui, sans régime.</p>
+    <form id="exit-form">
+      <input type="email" required placeholder="Votre adresse e-mail" aria-label="Votre adresse e-mail">
+      <button type="submit" class="btn gold" style="width:100%;">Recevoir le guide gratuit</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  // liens à compléter par Amara
+  var FEDAPAY_LINK = "#"; // LIEN FEDAPAY À FOURNIR
+  var WHATSAPP_LINK = "#"; // LIEN WHATSAPP À FOURNIR
+  ["cta-hero","cta-final"].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.href=FEDAPAY_LINK;
+  });
+  ["wa-float","cta-whatsapp-final"].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.href=WHATSAPP_LINK;
+  });
+
+  // reveal on scroll
+  try{
+    var els=document.querySelectorAll('.reveal');
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.15});
+    els.forEach(function(el){ io.observe(el); });
+  }catch(e){}
+
+  // countdown 48h (stocké localement pour rester cohérent à chaque visite)
+  try{
+    var KEY="en_countdown_end";
+    var end = localStorage.getItem(KEY);
+    if(!end){
+      end = Date.now() + 48*60*60*1000;
+      localStorage.setItem(KEY, end);
+    } else {
+      end = parseInt(end,10);
+    }
+    function tick(){
+      var diff = end - Date.now();
+      if(diff < 0) diff = 0;
+      var h = Math.floor(diff/3600000);
+      var m = Math.floor((diff%3600000)/60000);
+      var s = Math.floor((diff%60000)/1000);
+      var pad=function(n){return String(n).padStart(2,'0');};
+      document.getElementById('cd-h').textContent = pad(h);
+      document.getElementById('cd-m').textContent = pad(m);
+      document.getElementById('cd-s').textContent = pad(s);
+    }
+    tick();
+    setInterval(tick,1000);
+  }catch(e){}
+
+  // exit popup
+  try{
+    var overlay=document.getElementById('exit-overlay');
+    var shown = false;
+    document.addEventListener('mouseleave', function(e){
+      if(!shown && e.clientY < 10){
+        shown = true;
+        overlay.classList.add('show');
+      }
+    });
+    document.getElementById('exit-close').addEventListener('click', function(){
+      overlay.classList.remove('show');
+    });
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) overlay.classList.remove('show');
+    });
+    document.getElementById('exit-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      overlay.querySelector('.popup').innerHTML = '<h3>Merci !</h3><p>Votre guide vous sera envoyé très bientôt.</p>';
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
